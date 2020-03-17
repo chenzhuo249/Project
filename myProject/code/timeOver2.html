@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div,input{
+            margin: 0;
+            padding: 0;
+        }
+        #dd div{
+            display: inline-block;
+            font-size: 50px;
+        }
+        #dd input{
+            width: 120px;
+            height: 60px;
+            font-size: 50px;
+        }
+        #dd #btn{
+            margin-left: 50px;
+            font-size: 40px;
+            background-color: salmon;
+        }
+    </style>
+</head>
+<body>
+    <div id="dd">
+        <input type="text" id="i1">
+        <div id="d1">时</div>
+        <input type="text" id="i2">
+        <div id="d1">分</div>
+        <input type="text" id="i3">
+        <div id="d1">秒</div>
+        <button id="btn">开始</button>
+        <div id="show"></div>
+    </div>   
+    <script src="../js/jquery.min.js"></script>
+    <script>
+ 
+        $("#dd>#btn")[0].onclick = function (){
+            var h = Number($("#dd>#i1").val() * 60 * 60);
+            var m = Number($("#dd>#i2").val() * 60);
+            var s = Number($("#dd>#i3").val());
+
+            var countSecond = h + m + s;
+
+            h = Math.floor(countSecond / (60 * 60));
+            m = Math.floor(countSecond / 60 % 60);
+            s = Math.floor(countSecond % 60);
+
+            function time(){
+                if (countSecond > 0){
+                    countSecond -= 1;
+                    h = Math.floor(countSecond / (60 * 60));
+                    m = Math.floor(countSecond / 60 % 60);
+                    s = Math.floor(countSecond % 60);
+                    setTimeout(time, 1000);
+                    function addZero(num){
+                        if (num < 10){
+                            return "0" + num; 
+                        }else{
+                            return "" + num;
+                        }
+                    }
+                    $("#dd>#show").html(addZero(h) + ":" + addZero(m) + ":" + addZero(s));
+                }else{
+                    $("#dd>#show").html("时间到");
+                }
+            }
+            time();
+            }
+
+    </script>
+</body>
+</html>

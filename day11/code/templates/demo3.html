@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>注册用户</h1>
+    <div id="d1">
+        姓名: <input id="uname" type="text">
+        <!-- <span id="msg" style="color: red">用户名已存在</span> -->
+    </div>
+    <div>
+        密码: <input type="password" id="pwd">
+    </div>
+    <br>
+    <button id="btn">提交</button>
+
+    <script>
+        var btn = document.getElementById("btn");
+        
+        btn.onclick = function (){
+            var name = document.getElementById("uname");
+            var pwd = document.getElementById("pwd");
+            // console.log(name.value, pwd.value);
+            var xhr = new XMLHttpRequest();
+            var str = "/logins?name="+name.value+"&password="+pwd.value;
+            xhr.open("get", str, true);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4 && xhr.status==200){
+                    if(xhr.responseText=="YES"){
+                        alert("注册成功");
+                    }else{
+                        alert("用户名存在");
+                    }
+                }
+            }
+            xhr.send(null);
+        }
+
+    </script>
+</body>
+</html>

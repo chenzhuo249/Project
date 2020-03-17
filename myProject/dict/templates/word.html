@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>查词</title>
+    <style>
+        form,table,tr,td,input,body{
+            margin: 0;
+            padding: 0;
+        }
+        #ff{
+            width: 500px;
+            height: 200px;
+            border: 2px solid black;
+            background-color: rgb(212, 210, 210);
+        }
+        #ff>#tt .word{
+            font-size: 40px;
+        }
+        #ff>#tt .inputWord{
+            font-size: 40px;
+            width: 300px;
+        }
+        #ff>#tt #btn{
+            font-size: 30px;
+        }
+        #show{
+            background-color: pink;
+            height: 110px;
+        }
+      
+    </style>
+</head>
+<body>
+       
+    <form id="ff" action="http://127.0.0.1:5000/word" method="POST">
+        <table id="tt">
+            <tr id="trWord">
+                <td class="word">单词:</td>
+                <td><input class="inputWord" type="text" name="english"></td>
+                <td><button id="btn">查询</button></td>
+            </tr> 
+        </table>
+        <h1 id="show"></h1>
+    </form>
+    
+ 
+</body>
+</html>

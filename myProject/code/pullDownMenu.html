@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>城市下拉菜单</title>
+    <style>
+        #ff select{
+            height: 60px;
+            font-size: 40px;
+            border: 2px solid black;
+            
+        }
+        #ff>#s1, #ff>#s2{
+            width: 150px;
+        }
+        #ff>#s3{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" id="ff">
+        <select name="prov" id="s1"></select>
+        <select name="city" id="s2"></select>
+        <select name="area" id="s3"></select>
+    </form>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/data.js"></script>
+    
+    <script>
+        // 打印所有元素
+        // console.log(data);
+
+        // 查找所有页面元素
+        var $prov = $("#ff>#s1"); 
+        var $city = $("#ff>#s2"); 
+        var $erea = $("#ff>#s3"); 
+
+        // 为每一个下拉框的第一项添加 “请选择” 选项
+        (function(){
+            $("#ff select").append($("<option></option>").html("请选择").prop("value", 0));
+        })();
+        
+        $.each(data, function(a,b){
+            // 打印所有省份
+            // console.log(b.provId, b.provname);
+            $prov.append($("<option></option>").html(b.provname).prop("value", b.provId));
+        })// 一级
+
+        $prov.on("change", function(){
+            $("#ff>#s2 option:not(option:first)").remove();
+            $("#ff>#s3 option:not(option:first)").remove();
+            $.each(data, function(index,prov){
+                if(prov.provId == $prov.val()){
+                    $.each(prov.citys, function(i, city){
+                        $city.append($("<option></option>").html(city.cityname).prop("value", city.cityId));
+                    })
+                } 
+            })
+        })
+
+        $city.change(function(){
+            $("#ff>#s3 option:not(option:first)").remove();
+            $.each(data, function(i, prov){
+                $.each(prov.citys, function(i, city){
+                    if(city.cityId == $city.val()){
+                        $.each(city.areas, function(i, area){
+                            $erea.append($("<option></option>").html(area.areaname).prop("value", area.areaId));
+                        })
+                    }
+                })
+            })
+        })
+
+    </script>
+
+</body>
+</html>

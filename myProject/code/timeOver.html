@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时</title>
+    <style>
+        #hh{
+            text-align: center;
+            font-size: 50px;
+        }
+        #dd{
+            text-align: center;
+            color: red;
+            font-size: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="hh"></h1>
+    <div id="dd"></div>
+    <script>
+        var h = prompt("输入小时:");
+        var m = prompt("输入分钟:");
+        var s = prompt("输入秒钟:");
+        var hhStr = h + "小时" + m + "分" + s + "秒倒计时开始";
+        document.getElementById("hh").innerHTML = hhStr;
+        var ddDiv = document.getElementById("dd");
+
+        var countSecond = Number(h * 60 * 60) + Number(m * 60) + Number(s);
+
+        h = Math.floor(countSecond / (60 * 60));
+        m = Math.floor(countSecond / 60 % 60);
+        s = Math.floor(countSecond % 60);
+
+        function time(){
+            if (countSecond > 0){
+                countSecond -= 1;
+                h = Math.floor(countSecond / (60 * 60));
+                m = Math.floor(countSecond / 60 % 60);
+                s = Math.floor(countSecond % 60);
+                setTimeout(time, 1000);
+                function addZero(num){
+                    if (num < 10){
+                        return "0" + num; 
+                    }else{
+                        return "" + num;
+                    }
+                }
+                var timeStr = addZero(h) + ":" + addZero(m) + ":" + addZero(s);
+                ddDiv.innerHTML = timeStr;                
+
+            }else{
+                ddDiv.innerHTML = "时间到";
+            }
+        }
+        time();
+
+        
+
+
+    </script>
+</body>
+</html>

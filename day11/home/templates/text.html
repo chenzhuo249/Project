@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <input type="text" name="feng_kong_cuo_shi_1" list="feng_kong_cuo_shi_1" maxlength="20">
+        <datalist id="feng_kong_cuo_shi_1" style="display:none;">
+            <option value="土地流转抵押">土地流转抵押</option>
+            <option value="土地收益权质押">土地收益权质押</option>
+            <option value="借款人夫妻提供连带责任保证">借款人夫妻提供连带责任保证</option>
+            <option value="借款人亲属提供连带责任保证">借款人亲属提供连带责任保证</option>
+            <option value="第三方公司提供连带责任保证">第三方公司提供连带责任保证</option>
+            <option value="合作社提供连带责任保证">合作社提供连带责任保证</option>
+            <option value="公务员提供连带责任保证">公务员提供连带责任保证</option>
+            <option value="借款人投保借款人意外险">借款人投保借款人意外险</option>
+            <option value="借款人投保政策性农险">借款人投保政策性农险</option>
+            <option value="借款人投保商业性农险">借款人投保商业性农险</option>
+            <option value="借款人投保相应财产保险">借款人投保相应财产保险</option>
+
+        </datalist>
+       
+        <option th:each="background:${printerBackgrounds}" th:text="${background.name}" th:value="${background.id}" 
+        th:selected="${background.id == printer.background_id}"></option>
+        
+</body>
+</html>
