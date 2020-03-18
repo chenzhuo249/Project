@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax_post</title>
+</head>
+<body>
+    <input type="text" id="uname">
+    <button id="btn">点击发送post请求</button>
+    <div id="show"></div>
+    <script src="../static/jquery.min.js"></script>
+    <script>
+        $("#btn").click(function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", "/post", true);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4 && xhr.status==200){
+                    $("#show").html(xhr.responseText);
+                }
+            }
+        
+            var data = "uname=" + $("#uname").val();
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            xhr.send(data);
+        })
+    
+    </script>
+</body>
+</html>
