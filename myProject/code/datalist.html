@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>datalist</title>
+</head>
+<body>
+    <form>
+        <input list="browsers" name="browser">
+        <datalist id="browsers">
+            <option value="Internet Explorer">
+            <option value="Firefox">
+            <option value="Chrome">
+            <option value="Opera">
+            <option value="Safari">
+        </datalist>
+    </form>
+    <p>点击按钮返回 datalist 中所有选项的值。</p>
+    <p id="demo"></p>
+    <button type="button" onclick="myFunction()">点我</button>
+    <p><strong>注意:</strong> Internet Explorer 9 和更早IE版本，Safari浏览器均不支持 datalist 元素。</p>
+    <script>
+        function myFunction(){
+            var x = document.getElementById("browsers");
+            var txt = "";
+            for (var i = 0; i < x.options.length; i++){
+                txt = txt + x.options[i].value + "<br>";
+            }
+            document.getElementById("demo").innerHTML = txt;
+        }
+    </script>
+
+</body>
+</html>
