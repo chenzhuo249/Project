@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小词典查询页</title>
+    <link rel="shortcut icon" href="../static/img/ico/01.ico">
+    <link rel="stylesheet" href="../static/css/dict.css" type="text/css">
+</head>
+<body>
+    <div id="dd">
+        <div id="dd1">
+            <div id="img1"></div>
+            <ul>
+                <li id="li1">在线词典</li>
+                <li id="li2">离线查询</li>
+                <li id="li3">历史记录</li>
+                <li id="li4">单词小本</li>
+                <li id="li5">更换壁纸</li>
+                <li id="li6">更多功能</li>
+            </ul>
+        </div>
+        <div id="dd2">
+            <div id="dd2_1">
+                <input id="word" type="text" name="word" placeholder="英转中">
+                <button id="btn1">查询</button><button id="btn2">切换</button>
+                <div id="show"></div>
+            </div>
+            <div id="dd2_2">
+                <input id="word" type="text" name="word" placeholder="离线英转中">
+                <button id="btn1">查询</button><button id="btn2">切换</button>
+                <div id="show"></div>
+            </div>
+            <div id="dd2_3">
+                <div>最近查询记录</div>
+                <ul>
+                    <li id="li1">word</li>
+                    <li id="li2">love</li>
+                    <li id="li3">love</li>
+                    <li id="li4">love</li>
+                    <li id="li5">love</li>
+                    <li id="li6">love</li>
+                    <li id="li7">love</li>
+                    <li id="li8">love</li>
+                    <li id="li9">love</li>
+                    <li id="li10">love</li>
+                </ul>
+            </div>
+            <div id="dd2_4">单词小本
+
+            </div>
+            <div id="dd2_5">更换壁纸
+
+            </div>
+            <div id="dd2_6">正在开发<br>尽请期待...
+
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/jquery.min.js"></script>
+    <script>
+        
+        $("#li1").click(function(){
+            setZIndex("1");
+        });
+        $("#li2").click(function(){
+            setZIndex("2");
+        });
+        $("#li3").click(function(){
+            setZIndex("3");
+        });
+        $("#li4").click(function(){
+            setZIndex("4");
+        });
+        $("#li5").click(function(){
+            setZIndex("5");
+        });
+        $("#li6").click(function(){
+            setZIndex("6");
+        });
+
+
+        function setZIndex(target){
+            var arr = {"1":$("#dd2>#dd2_1"), "2":$("#dd2>#dd2_2"), "3":$("#dd2>#dd2_3"), "4":$("#dd2>#dd2_4"), "5":$("#dd2>#dd2_5"), "6":$("#dd2>#dd2_6")};
+            $.each(arr, function(i, view){
+                if(i==target){
+                    view.css("zIndex", 2);
+                }else{
+                    view.css("zIndex", 1);
+                }
+            });
+        }
+
+
+        // $("#btn1").click(function(){
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.open("post", "/register_data", true);
+        //     xhr.onreadystatechange = function(){
+        //         if(xhr.readyState==4&&xhr.status==200){
+        //             console.log(xhr.responseText);
+        //         }
+        //     }
+        //     var json_obj = {"name":$("#dd>#dd1>#i1").val(), "password":$("#dd>#dd2>#i2").val()};
+        //     var json_str = JSON.stringify(json_obj);
+        //     xhr.setRequestHeader('Content-Type','application/json');
+        //     xhr.send(json_str);
+        // });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

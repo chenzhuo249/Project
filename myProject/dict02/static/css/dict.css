@@ -1,0 +1,137 @@
+body,div,input,ul,li,button{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url(../img/bg_img/01.jpeg);
+}
+
+
+#dd{
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    border: 2px solid white;
+    position: relative;
+    top: 200px;
+    left: 200px;
+}
+
+#dd>#dd1{
+    width: 140px;
+    height: 400px;
+    /* 设置背景颜色渐变 */
+    background-image: linear-gradient(#e66465, #9198e5);
+}
+
+#dd>#dd1>#img1{
+    width: 140px;
+    height: 100px;
+    background-image: url("../img/ico/02.png");
+}
+
+#dd>#dd1>ul li{
+    list-style: none;
+    text-align: center;
+    font-size: 23px;
+    border-bottom: 1px solid black;
+}
+#dd>#dd1>ul #li1{
+    border-top: 1px solid black;
+}
+
+
+#dd>#dd1>ul li:hover{
+    color: white;
+    background-color: tomato;
+    /* 设置鼠标移入形状为小手 */
+    cursor: pointer;
+
+}
+
+/* 不同功能页面样式 */
+#dd>#dd2>#dd2_1,#dd2_2,#dd2_3,#dd2_4,#dd2_5,#dd2_6{
+    width: 358px;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 142px;
+    /* 设置背景颜色渐变 */
+    /* background-image: linear-gradient(#e66465, #9198e5); */
+    background-color: pink;
+}
+#dd>#dd2>#dd2_1{
+    z-index: 2;
+}
+
+/* 设置在线查询,离线查询页面样式 */
+/* 单词输入框设置 */
+#dd>#dd2 #dd2_1>#word,#dd2_2>#word{
+    font-size: 25px;
+    width: 200px;
+    height: 29px;
+    line-height: 29px;
+    position: absolute;
+    top: 68px;
+    left: 10px;
+}
+
+/* 按钮设置 */
+#dd>#dd2>#dd2_1 #btn1{
+    font-size: 20px;
+    position: absolute;
+    top: 68px;
+    left: 220px;
+    padding: 0 5px;
+}
+
+#dd>#dd2>#dd2_1 #btn2{
+    font-size: 20px;
+    position: absolute;
+    top: 68px;
+    left: 280px;
+    padding: 0 5px;
+}
+#dd>#dd2>#dd2_2 #btn1{
+    font-size: 20px;
+    position: absolute;
+    top: 68px;
+    left: 220px;
+    padding: 0 5px;
+}
+
+#dd>#dd2>#dd2_2 #btn2{
+    font-size: 20px;
+    position: absolute;
+    top: 68px;
+    left: 280px;
+    padding: 0 5px;
+}
+
+
+/* 显示框设置 */
+#dd>#dd2 #dd2_1>#show, #dd2_2>#show{
+    width: 324px;
+    height: 232px;
+    background-color: white;
+    opacity: 0.5;
+    position: absolute;
+    top: 113px;
+    left: 10px;
+
+}
+
+
+/* 设置历史记录界面样式 */
+#dd>#dd2>#dd2_3 li{
+    list-style: none;
+}
+
+
+#dd>#dd2>#dd2_3>div{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+

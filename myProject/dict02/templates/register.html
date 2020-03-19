@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小词典注册页</title>
+    <link rel="shortcut icon" href="../static/img/ico/01.ico">
+    <link rel="stylesheet" href="../static/css/register.css" type="text/css">
+</head>
+<body>
+    <div id="dd_bg"></div>
+    <div id="dd">
+        <div id="dd1">
+            <span id="s1">姓名</span><input id="i1" type="text" name="userName" maxlength="10">
+        </div>
+        <div id="dd2">
+            <span id="s2">密码</span><input id="i2" type="password" name="password" maxlength="15">
+        </div>
+        <div id="dd3">
+            <button id="btn1">注册</button>
+        </div> 
+    </div>
+    <script src="../static/js/jquery.min.js"></script>
+    <script>
+        $("#btn1").click(function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", "/register_data", true);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4&&xhr.status==200){
+                    console.log(xhr.responseText);
+                }
+            }
+            var json_obj = {"name":$("#dd>#dd1>#i1").val(), "password":$("#dd>#dd2>#i2").val()};
+            var json_str = JSON.stringify(json_obj);
+            xhr.setRequestHeader('Content-Type','application/json');
+            xhr.send(json_str);
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
