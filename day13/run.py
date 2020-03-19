@@ -12,7 +12,7 @@ def data_view():
 @app.route("/data_server")
 def data_server_view():
     f = open("./static/cartData.txt", "r")
-    data = f.read()
+    data = f.read().lstrip("cartdata=")
     f.close()
     return data
 

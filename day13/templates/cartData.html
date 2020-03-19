@@ -5,21 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        table{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <button id="btn">获取数据</button>
-    <table>
+    <table border="2px">
         <thead>
-            <th>
-                <td>id</td>
-                <td>count</td>
-                <td>name</td>
-                <td>default_image_url</td>
-                <!-- ￥99 -->
-                <td>price</td> 
-                <!-- input type=checkbox 复选框 选中 -->
-                <td>selected</td>
-            </th>
+            <tr>
+                <th>id</th>
+                <th>count</th>
+                <th>name</th>
+                <th>default_image_url</th>
+                <th>price</th><!-- ￥99 -->
+                <th>selected</th><!-- input type=checkbox 复选框 选中 -->
+            </tr>
         </thead>
         <tbody id="tby">
             <!-- 显示内容 -->
@@ -34,8 +37,29 @@
             xhr.open("get", "/data_server", true);
             xhr.onreadystatechange = function(){
                 if(xhr.readyState==4&&xhr.status==200){
-                    console.log(typeof xhr.responseText);
-                    console.log(xhr.responseText);
+                    var json_obj = JSON.parse(xhr.responseText)
+                    $.each(json_obj.cart, function(i, info){
+                        $("#tby").append($("<tr></tr>"));
+                        $.each(info, function(key, value){
+                            var target = $("#tby tr:last");
+                            var ele = "" 
+                            if(key=="default_image_url"){
+                                ele = "<td><img src='../static/img/"+value+"'></td>";
+                            }else if(key=="price"){
+                                ele = $("<td></td>").html("￥"+value);
+                            }else if(key=="selected"){
+                                if(value==true){
+                                    ele = $("<td><input type='checkbox' checked></td>");
+                                }else{
+                                    ele = $("<td><input type='checkbox'></td>");    
+                                }
+                                
+                            }else{
+                                ele = $("<td></td>").html(value);
+                            }
+                            target.append(ele);
+                        });
+                    });                   
                 }
             }
             xhr.send(null);

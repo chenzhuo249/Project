@@ -4,32 +4,26 @@ cartdata={
         {
             "id":"1",
             "count":"11",
-            "name":"蓝色小尺寸",
-            "default_image_url":"2_5pdezhv.jpg",
+            "name":"蓝色小奥迪",
+            "default_image_url":"01.jpg",
             "price":100,
-            "selected":true,
-            "sku_sale_attr_name":["安踏A/尺寸：","安踏A/颜色："],
-            "sku_sale_attr_val":["15寸","蓝色"]
+            "selected":true
         },
         {
             "id":"2",
             "count":"9",
-            "name":"红色大尺寸",
-            "default_image_url":"3_JGA6F97.jpg",
+            "name":"红色大跑车",
+            "default_image_url":"02.jpg",
             "price":10000,
-            "selected":true,
-            "sku_sale_attr_name":["安踏A/尺寸：","安踏A/颜色："],
-            "sku_sale_attr_val":["18寸","绿色"]
+            "selected":true
         },
         {
             "id":"3",
             "count":"10",
-            "name":"蓝色小尺寸",
-            "default_image_url":"4_z3FdRMq.jpg",
+            "name":"蓝色大宝马",
+            "default_image_url":"03.jpg",
             "price":1000,
-            "selected":true,
-            "sku_sale_attr_name":["安踏B/尺寸：","安踏B/颜色："],
-            "sku_sale_attr_val":["18寸","蓝色"]
+            "selected":false
         }
     ]
 }
