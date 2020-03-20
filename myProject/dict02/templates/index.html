@@ -26,17 +26,28 @@
     <script>
 
         $("#btn1").click(function(){
-            var xhr = new XMLHttpRequest();
-            xhr.open("post", "/index_data", true);
-            xhr.onreadystatechange = function(){
-                if(xhr.readyState==4&&xhr.status==200){
-                    console.log(xhr.responseText);
+            var userName = $("#dd>#dd1>#i1").val();
+            var userPwd = $("#dd>#dd2>#i2").val();
+            if(userName==""||userPwd==""){
+                alert("请输入用户名或密码!")
+            }else{
+                var xhr = new XMLHttpRequest();
+                xhr.open("post", "/index_data", true);
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState==4&&xhr.status==200){
+                        var json_obj = JSON.parse(xhr.responseText);
+                        if(json_obj.code==77){
+                            location.href = "http://127.0.0.1:5000/dict";
+                        }else if(json_obj.code==44){
+                            alert("登录失败,请重试!");
+                        }
+                    }
                 }
+                var json_obj = {"name":$("#dd>#dd1>#i1").val(), "password":$("#dd>#dd2>#i2").val()};
+                var json_str = JSON.stringify(json_obj);
+                xhr.setRequestHeader('Content-Type','application/json');
+                xhr.send(json_str);
             }
-            var json_obj = {"name":$("#dd>#dd1>#i1").val(), "password":$("#dd>#dd2>#i2").val()};
-            var json_str = JSON.stringify(json_obj);
-            xhr.setRequestHeader('Content-Type','application/json');
-            xhr.send(json_str);
         });
 
         $("#btn2").click(function(){

@@ -22,10 +22,11 @@ class Database:
                                   password = self.password,
                                   database = self.database,
                                   charset=self.charset)
-
+    # 生成游标
     def create_cursor(self):
         self.cur = self.db.cursor()
 
+    # 用户注册
     def s_register(self,name,password):
         """
             用户注册
@@ -48,11 +49,21 @@ class Database:
                 self.db.rollback()
                 return False
 
+    # 用户登录
     def s_login(self, name, password):
+        """
+            用户登录
+        :param name: str 用户名
+        :param password: str 密码
+        :return: 登录成功返回True  失败返回False
+        """ 
         sql = "select name,password from user where name = %s;"
         self.cur.execute(sql, [name])
-        result = self.cur.fetchone()
-        # print("数据库:用户名+密码 ", result)
+        try:
+            result = self.cur.fetchone()
+        except:
+            return False
+            
         if result[1] == password:
             return True
         else:
