@@ -30,23 +30,25 @@
             if(userName==""||userPwd==""){
                 alert("请输入用户名或密码!")
             }else{
-                var xhr = new XMLHttpRequest();
-                xhr.open("post", "/register_data", true);
-                xhr.onreadystatechange = function(){
-                    if(xhr.readyState==4&&xhr.status==200){
-                        var json_obj = JSON.parse(xhr.responseText);
-                        if(json_obj.code==77){
-                                alert("注册成功,自动跳转到登录页面")
+                var json_obj = {"name":$("#dd>#dd1>#i1").val(), "password":$("#dd>#dd2>#i2").val()};
+                $.ajax({
+                    url: "/register_data",
+                    type: "post",
+                    data: JSON.stringify(json_obj),
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function(res){
+                        if(res.code==77){
+                            alert("注册成功,自动跳转到登录页面")
                             location.href = "http://127.0.0.1:5000/index";
-                        }else if(json_obj.code==44){
+                        }else if(res.code==44){
                             alert("注册失败,请重新输入!")
                         }
+                    },
+                    error: function(){
+                        alert("请求失败,请重新输入!")
                     }
-                }
-                var json_obj = {"name":$("#dd>#dd1>#i1").val(), "password":$("#dd>#dd2>#i2").val()};
-                var json_str = JSON.stringify(json_obj);
-                xhr.setRequestHeader('Content-Type','application/json');
-                xhr.send(json_str);
+                });
             }
         });
             

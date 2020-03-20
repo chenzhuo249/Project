@@ -18,6 +18,7 @@ def index_view():
 def index_data_view():
     name = request.json.get("name")
     pwd = request.json.get("password")
+    print(name, pwd)
     if db.s_login(name, pwd):
         return '{"code":77, "msg":"登录成功,可跳转到 dict.html页面"}'
     else:
