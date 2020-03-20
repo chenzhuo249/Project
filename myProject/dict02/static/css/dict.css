@@ -51,7 +51,7 @@ body{
 }
 
 /* 不同功能页面样式 */
-#dd>#dd2>#dd2_1,#dd2_2,#dd2_3,#dd2_4,#dd2_5,#dd2_6{
+#dd>#dd2>#dd2_1,#dd2_3,#dd2_4,#dd2_5,#dd2_6{
     width: 358px;
     height: 400px;
     position: absolute;
@@ -65,11 +65,11 @@ body{
     z-index: 2;
 }
 
-/* 设置在线查询,离线查询页面样式 */
+/* 设置在线查询页面样式 */
 /* 单词输入框设置 */
-#dd>#dd2 #dd2_1>#word,#dd2_2>#word{
+#dd>#dd2>#dd2_1>#word{
     font-size: 25px;
-    width: 200px;
+    width: 230px;
     height: 29px;
     line-height: 29px;
     position: absolute;
@@ -82,37 +82,13 @@ body{
     font-size: 20px;
     position: absolute;
     top: 68px;
-    left: 220px;
+    left: 254px;
     padding: 0 5px;
 }
-
-#dd>#dd2>#dd2_1 #btn2{
-    font-size: 20px;
-    position: absolute;
-    top: 68px;
-    left: 280px;
-    padding: 0 5px;
-}
-#dd>#dd2>#dd2_2 #btn1{
-    font-size: 20px;
-    position: absolute;
-    top: 68px;
-    left: 220px;
-    padding: 0 5px;
-}
-
-#dd>#dd2>#dd2_2 #btn2{
-    font-size: 20px;
-    position: absolute;
-    top: 68px;
-    left: 280px;
-    padding: 0 5px;
-}
-
 
 /* 显示框设置 */
-#dd>#dd2 #dd2_1>#show, #dd2_2>#show{
-    width: 324px;
+#dd>#dd2>#dd2_1>#show{
+    width: 298px;
     height: 232px;
     background-color: white;
     opacity: 0.5;

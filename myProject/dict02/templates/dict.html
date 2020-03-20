@@ -14,7 +14,6 @@
             <div id="img1"></div>
             <ul>
                 <li id="li1">在线词典</li>
-                <li id="li2">离线查询</li>
                 <li id="li3">历史记录</li>
                 <li id="li4">单词小本</li>
                 <li id="li5">更换壁纸</li>
@@ -23,13 +22,8 @@
         </div>
         <div id="dd2">
             <div id="dd2_1">
-                <input id="word" type="text" name="word" placeholder="英转中">
-                <button id="btn1">查询</button><button id="btn2">切换</button>
-                <div id="show"></div>
-            </div>
-            <div id="dd2_2">
-                <input id="word" type="text" name="word" placeholder="离线英转中">
-                <button id="btn1">查询</button><button id="btn2">切换</button>
+                <input id="word" type="text" name="word" placeholder="中英互译">
+                <button id="btn1">查询</button>
                 <div id="show"></div>
             </div>
             <div id="dd2_3">
@@ -74,9 +68,6 @@
         $("#li1").click(function(){
             setZIndex("1");
         });
-        $("#li2").click(function(){
-            setZIndex("2");
-        });
         $("#li3").click(function(){
             setZIndex("3");
         });
@@ -92,7 +83,7 @@
 
 
         function setZIndex(target){
-            var arr = {"1":$("#dd2>#dd2_1"), "2":$("#dd2>#dd2_2"), "3":$("#dd2>#dd2_3"), "4":$("#dd2>#dd2_4"), "5":$("#dd2>#dd2_5"), "6":$("#dd2>#dd2_6")};
+            var arr = {"1":$("#dd2>#dd2_1"), "3":$("#dd2>#dd2_3"), "4":$("#dd2>#dd2_4"), "5":$("#dd2>#dd2_5"), "6":$("#dd2>#dd2_6")};
             $.each(arr, function(i, view){
                 if(i==target){
                     view.css("zIndex", 2);
@@ -101,21 +92,40 @@
                 }
             });
         }
+    </script>
+    <script>
+        
+        var consult = $("#dd>#dd2>#dd2_1>#btn1");
+        var switchover = $("#dd>#dd2>#dd2_1>#btn1");
+        var show = $("#dd>#dd2>#dd2_1>#show");
+
+        consult.click(function(){
+            var word = $("#dd>#dd2>#dd2_1>#word").val();
+            if(word==""){
+                show.html("请输入要查询的单词!").css("color", "red");
+            }else{
+                var xhr = new XMLHttpRequest();
+                xhr.open("post", "/dict_data", true);
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState==4&&xhr.status==200){
+                        var json_obj = JSON.parse(xhr.responseText);
+                        if(json_obj.code==77){
+                            show.html(json_obj.data);                            
+                        }else if(json_obj.code==44){
+                            alert(json_obj.code + "  " + json_obj.data)
+                        }
+                    }
+                }
+                var json_obj = {"userWord": word};
+                var json_str = JSON.stringify(json_obj);
+                xhr.setRequestHeader('Content-Type','application/json');
+                xhr.send(json_str); 
+            }
+        })
+        
 
 
-        // $("#btn1").click(function(){
-        //     var xhr = new XMLHttpRequest();
-        //     xhr.open("post", "/register_data", true);
-        //     xhr.onreadystatechange = function(){
-        //         if(xhr.readyState==4&&xhr.status==200){
-        //             console.log(xhr.responseText);
-        //         }
-        //     }
-        //     var json_obj = {"name":$("#dd>#dd1>#i1").val(), "password":$("#dd>#dd2>#i2").val()};
-        //     var json_str = JSON.stringify(json_obj);
-        //     xhr.setRequestHeader('Content-Type','application/json');
-        //     xhr.send(json_str);
-        // });
+
     </script>
 </body>
 </html>

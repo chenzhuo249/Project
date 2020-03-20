@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect, render_template
 from dict_db import Database
+from youdaoDict import translate
 import json
 
 db = Database()
@@ -42,10 +43,14 @@ def register_data_view():
 def dict_view():
     return render_template("dict.html")
 # 查询单词逻辑处理
-@app.route("/dict_data")
+@app.route("/dict_data", methods=["POST"])
 def dict_data_view():
-    return "查询结果"
-
+    word = request.json.get("userWord", "not found 404!")
+    result = translate(word)
+    if result:
+        return json.dumps({"code":77, "data":result})
+    else:
+        return '{"code":44, "data":"服务端在线查询失败!"}'
 
 if __name__ == "__main__":
     app.run(debug=True)
