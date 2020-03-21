@@ -37,7 +37,7 @@
                         type: "post",
                         data: JSON.stringify(json_obj),
                         contentType:'application/json',
-                        dataType: "json",
+                        dataType: "html",
                         success: function(res){
                             if(res.code==77){
                                 location.href = "http://127.0.0.1:5000/dict";
@@ -47,7 +47,8 @@
                         },
                         error: function(){
                             alert("请求失败,请重试!");
-                        },        
+                        },
+                        async: false
                 });
                
             }
