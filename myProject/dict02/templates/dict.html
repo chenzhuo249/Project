@@ -56,18 +56,16 @@
             </div>
             <div id="dd2_5">
                 <div></div>
-                <img id="img01" src="../static/img/bg_img/01.jpeg" width="100px" height="60px" alt="">
-                <img id="img02" src="../static/img/bg_img/02.jpg" width="100px" height="60px" alt="">
-                <img id="img03" src="../static/img/bg_img/03.jpg" width="100px" height="60px" alt="">
-                <img id="img04" src="../static/img/bg_img/04.jpg" width="100px" height="60px" alt="">
-                <img id="img05" src="../static/img/bg_img/05.jpg" width="100px" height="60px" alt="">
-                <img id="img06" src="../static/img/bg_img/06.jpg" width="100px" height="60px" alt="">
-                <img id="img07" src="../static/img/bg_img/07.jpg" width="100px" height="60px" alt="">
-                <img id="img08" src="../static/img/bg_img/08.jpg" width="100px" height="60px" alt="">
-                <img id="img09" src="../static/img/bg_img/09.jpg" width="100px" height="60px" alt="">
-                <img id="img10" src="../static/img/bg_img/10.jpg" width="100px" height="60px" alt="">
-                
-                
+                <img id="img01" src="../static/img/bg_img/01.jpeg" width="100px" height="60px" onclick="changeBgImage('../static/img/bg_img/01.jpeg')" alt="">
+                <img id="img02" src="../static/img/bg_img/02.jpg" width="100px" height="60px" onclick="changeBgImage('../static/img/bg_img/02.jpg')" alt="">
+                <img id="img03" src="../static/img/bg_img/03.jpg" width="100px" height="60px" onclick="changeBgImage('../static/img/bg_img/03.jpg')" alt="">
+                <img id="img04" src="../static/img/bg_img/04.jpg" width="100px" height="60px" onclick="changeBgImage('../static/img/bg_img/04.jpg')" alt="">
+                <img id="img05" src="../static/img/bg_img/05.jpg" width="100px" height="60px" onclick="changeBgImage('../static/img/bg_img/05.jpg')" alt="">
+                <img id="img06" src="../static/img/bg_img/06.jpg" width="100px" height="60px" onclick="changeBgImage('../static/img/bg_img/06.jpg')" alt="">
+                <img id="img07" src="../static/img/bg_img/07.jpg" width="100px" height="60px" onclick="changeBgImage('../static/img/bg_img/07.jpg')" alt="">
+                <img id="img08" src="../static/img/bg_img/08.jpg" width="100px" height="60px" onclick="changeBgImage('../static/img/bg_img/08.jpg')" alt="">
+                <img id="img09" src="../static/img/bg_img/09.jpg" width="100px" height="60px" onclick="changeBgImage('../static/img/bg_img/09.jpg')" alt="">
+                <img id="img10" src="../static/img/bg_img/10.jpg" width="100px" height="60px" onclick="changeBgImage('../static/img/bg_img/10.jpg')" alt="">   
             </div>
             <div id="dd2_6">正在开发<br>尽请期待...
 
@@ -164,37 +162,6 @@
         function changeBgImage(img){
             document.body.style.backgroundImage = "URL("+img+")"; 
         }
-        $("#dd>#dd2>#dd2_5>#img01").click(function(){
-            changeBgImage("../static/img/bg_img/01.jpeg")
-        });
-        $("#dd>#dd2>#dd2_5>#img02").click(function(){
-            changeBgImage("../static/img/bg_img/02.jpg")
-        });
-        $("#dd>#dd2>#dd2_5>#img03").click(function(){
-            changeBgImage("../static/img/bg_img/03.jpg")
-        });
-        $("#dd>#dd2>#dd2_5>#img04").click(function(){
-            changeBgImage("../static/img/bg_img/04.jpg")
-        });
-        $("#dd>#dd2>#dd2_5>#img05").click(function(){
-            changeBgImage("../static/img/bg_img/05.jpg")
-        });
-        $("#dd>#dd2>#dd2_5>#img06").click(function(){
-            changeBgImage("../static/img/bg_img/06.jpg")
-        });
-        $("#dd>#dd2>#dd2_5>#img07").click(function(){
-            changeBgImage("../static/img/bg_img/07.jpg")
-        });
-        $("#dd>#dd2>#dd2_5>#img08").click(function(){
-            changeBgImage("../static/img/bg_img/08.jpg")
-        });
-        $("#dd>#dd2>#dd2_5>#img09").click(function(){
-            changeBgImage("../static/img/bg_img/09.jpg")
-        });
-        $("#dd>#dd2>#dd2_5>#img10").click(function(){
-            changeBgImage("../static/img/bg_img/10.jpg")
-        });
-
     </script>
 </body>
 </html>

@@ -9,14 +9,33 @@
 <body>
     <button id="btn">点我</button>
     <script src="../static/jquery.min.js"></script>
+    <!-- <script>
+        function print(data){
+            console.log(data)
+        }
+    </script>
     <script>
+        $("#btn").click(function(){
+            var script = document.createElement("script");
+            script.src = "http://127.0.0.1:5001/server?callback=print";
+            $("body").append(script);
+        })    
+    </script> -->
+
+    <script>
+        // function print(data){
+        //     console.log(data)
+        // }
+
         $("#btn").click(function(){
             $.ajax({
                 url: "http://127.0.0.1:5001/server",
                 type: "get",
                 dataType: "jsonp",
-                success: function(res){
-                    console.log(res);
+                // jsonp: "callback", 
+                // jsonpCallback: "print"
+                success: function(data){
+                    console.log(data);
                 }
             });
         })
