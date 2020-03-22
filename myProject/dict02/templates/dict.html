@@ -163,6 +163,32 @@
             document.body.style.backgroundImage = "URL("+img+")"; 
         }
     </script>
+
+    <!-- 界面移动 -->
+    <script type="text/javascript">
+        var div = document.getElementById("dd");
+        var dragFlag = false;
+        var x,y;
+            
+        div.onmousedown = function (e) {
+            e = e || window.event;
+            x = e.clientX - div.offsetLeft;
+            y = e.clientY - div.offsetTop;
+            dragFlag = true;
+        };
+            
+        document.onmousemove = function (e) {
+            if (dragFlag) {
+                e = e || window.event;
+                div.style.left = e.clientX - x + "px";
+                div.style.top  = e.clientY - y + "px";
+            }
+        };
+            
+        document.onmouseup = function (e) {
+            dragFlag = false;
+        };
+    </script>
 </body>
 </html>
 

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style type="text/css">
-        #div {
+        #div1{
             position: absolute;
             left: 100px;
             top: 100px;
@@ -14,12 +14,28 @@
             height: 200px;
             background-color: #f60;
         }
+        #div1>div{
+            width: 100px;
+            height: 100px;
+            background-color: chartreuse;
+            position: absolute;
+        }
+        #div1>div>div{
+            width: 50px;
+            height: 50px;
+            background-color: teal;
+            position: absolute;
+        }
     </style>
 </head>
 <body>
-    <div id="div"></div>
+    <div id="div1">
+        <div>
+            <div></div>
+        </div>
+    </div>
     <script type="text/javascript">
-    var div = document.getElementById("div");
+    var div = document.getElementById("div1");
     var dragFlag = false;
     var x,y;
         
