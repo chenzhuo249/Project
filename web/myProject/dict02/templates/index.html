@@ -40,7 +40,9 @@
                         dataType: "json",
                         success: function(res){
                             if(res.code==77){
-                                location.href = "http://127.0.0.1:5000/dict";
+                                console.log(res);
+                                $("body").load("dict");
+                                // location.href = "http://127.0.0.1:5000/dict";
                             }else if(res.code==44){
                                 alert("登录失败,请重新输入!")
                             }
