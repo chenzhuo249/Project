@@ -56,8 +56,8 @@ body{
     width: 358px;
     height: 400px;
     position: absolute;
-    top: 0;
-    left: 142px;
+    /* top: 0;
+    left: 142px; */
     /* 设置背景颜色渐变 */
     /* background-image: linear-gradient(#e66465, #9198e5); */
     background-color: whitesmoke;

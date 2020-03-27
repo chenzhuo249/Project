@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>评论系统</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+    <script src="/static/js/jquery.min.js"></script>
+    <style type="text/css">
+        body {background-color: rgb(245, 245, 245) !important;}
+        p {overflow-wrap: break-word; word-wrap: break-word;}
+        .container {max-width: 640px !important;}
+        .hello-form {margin-bottom: 20px;}
+        header {margin: 50px 0 40px 0;}
+        header h1 {font-size: 60px; font-weight: bold;}
+        .sub-title {font-size: 24px;}
+        @media screen and (max-width: 600px) {.sub-title {display: block;}}
+        header a {text-decoration: none !important;}
+        footer {margin: 20px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="text-center">
+                <span class="text-success">HELLO</span>
+                <small>World</small>
+            </h1>
+        </header>
+
+        <div class="hello-form">
+            <form action="/index" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="uname">Name</label>
+                    <input type="text" id="uname" name="uname" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="content">Message</label>
+                    <textarea id="content" name="content" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+
+        </div>
+
+        <div id="contDiv" class="list-group">{{ list_cont }}
+        </div>
+        <footer class="text-center">
+            <small>
+                &copy; 2020 <a href="#">Chenzhuo</a> / <a href="#">Hello World</a>
+            </small>
+            <p>
+                <a href="#">&uarr;</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        var html = "你成功啦";
+        (function(){
+            $("#contDiv").html("nnnnfjae");
+        })
+        // {% for p in list_cont %}
+        //     html += '<a href="#" class="list-group-item">'
+        //     html += '<div>'
+        //     html += '<h5 class="pull-left text-success">'    
+        //     html += p.username        
+        //     html += '<small class="text-muted">第'+p.num+'条评论</small>'
+        //     html += '</h5>'            
+        //     html += '<h5 class="pull-right text-muted">'        
+        //     html += '<small>'+p.time+'</small>'        
+        //     html += '</h5>'            
+        //     html += '<div class="clearfix"></div>'        
+        //     html += '</div>'        
+        //     html += '<p>'+p.content+'</p>'    
+        //     html += '</a>'  
+        // {% empty %}
+        //     html = "empty"
+        // {% endfor %}
+
+    </script>
+
+</body>
+</html>

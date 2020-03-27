@@ -33,8 +33,7 @@ body{
 #dd>#dd1{
     width: 300px;
     position: relative;
-    top: 100px;
-    left: 65px;
+
 }
 #dd #dd1>#i1, #dd2>#i2{
     width: 200px;
