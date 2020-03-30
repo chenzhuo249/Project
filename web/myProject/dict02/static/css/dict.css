@@ -5,6 +5,7 @@ body,div,input,ul,li,button,img{
 
 body{
     background-image: url(../img/bg_img/01.jpeg);
+    background-size: 100%;
 }
 
 

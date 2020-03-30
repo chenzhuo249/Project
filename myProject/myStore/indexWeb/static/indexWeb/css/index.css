@@ -1,0 +1,136 @@
+div,body,header,footer,input,button,span,ul,li,img{
+    margin: 0;
+    padding: 0;
+}
+
+/*设置首页header样式 开始 */
+header{
+    height: 50px;
+    background-color: #f2f2f2;
+    box-shadow: 0 0 5px #666666;
+}
+.headerBar{
+    width: 70%;
+    height: 50px;
+    margin-left: 15%;
+}
+
+.headerBar div{
+    display: inline-block;
+    line-height: 50px;
+    margin-right: 20px;
+}
+.headerBar div:hover{
+    color: #ff0036;
+    cursor: pointer;
+}
+
+.headerText{
+    font-size: 20px;
+}
+
+/*设置首页header样式 结束 */
+
+/*设置页面主体样式 开始 */
+.container{
+    width: 70%;
+    height: 1000px;
+    /*background-color: #2aabd2;*/
+}
+
+/*主体 搜索栏样式 开始*/
+#contDiv{
+    border-bottom: 8px solid #FF0036;
+}
+.contSearch{
+    margin-top: 70px;
+    margin-bottom: 30px;
+}
+.container #searchBox1{
+    width: 73%;
+    font-size: 30px;
+    color: #666666;
+    padding-left: 30px;
+    height: 48px;
+    border: 2px solid #ff0036;
+    position: relative;
+}
+.container #searchBtn1{
+    width: 25%;
+    height: 48px;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 48px;
+    display: inline-block;
+    background-color: #ff0036;
+    position: absolute;
+}
+.container #searchBtn1:hover{
+    cursor: pointer;
+}
+/*主体 搜索栏样式 0结束*/
+
+
+/*设置商品列表 1开始 */
+#proDiv>.listGroupDiv{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#proDiv>.listGroupDiv>#firstList{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #FF0036;
+    height: 80px;
+    color: white;
+    font-size: 30px;
+    line-height: 80px;
+}
+.childList{
+    font-size: 20px;
+}
+
+/*设置商品列表样式 1结束 */
+
+/*设置轮播图 2开始 */
+#proDiv>.imgDiv{
+    padding-right: 0;
+    padding-left: 0;
+}
+.imgDiv #img{
+    width: 100%;
+}
+
+/*设置轮播图样式 2结束 */
+
+/*设置分隔条 3开始 */
+#barDiv div{
+    background-color: #ff0036;
+    font-size: 30px;
+    color: white;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+}
+
+/*设置分隔条 3结束 */
+
+
+/*设置商品展示栏 4开始 */
+
+
+/*设置商品展示栏 4结束 */
+
+
+/*设置页面主体样式 0结束 */
+
+
+/*设置首页footer样式 开始 */
+footer{
+    height: 150px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+/*设置首页footer样式 结束 */

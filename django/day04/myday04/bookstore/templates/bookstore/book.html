@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>书籍首页</title>
+    <style>
+        th,td{
+            padding: 3px 5px;
+            text-align: center;
+        }
+        .aa{
+            text-decoration: none;
+
+        }
+
+    </style>
+</head>
+<body>
+    <h1>BOOK成功啦</h1>
+
+    <table border="1px" cellspacing="0">
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>pub</th>
+            <th>price</th>
+            <th>market_price</th>
+            <th>op</th>
+        </tr>
+        {% for item in all_books %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.pub }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.market_price }}</td>
+                <td>
+                    <a href="/bookstore/update_book/{{ item.id }}" class="aa">更新</a>
+                    <a href="/bookstore/delete_book/{{ item.id }}" class="aa">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>

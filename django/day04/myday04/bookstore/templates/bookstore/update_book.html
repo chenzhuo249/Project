@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更新书籍价格信息</title>
+</head>
+<body>
+    <form action="/bookstore/update_book/{{ book.id }}" method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>title</td>
+                <td>{{ book.title }}</td>
+            </tr>
+            <tr>
+                <td>pub</td>
+                <td>{{ book.pub }}</td>
+            </tr>
+            <tr>
+                <td>price</td>
+                <td><input type="text" name="price" value="{{ book.price }}"></td>
+            </tr>
+            <tr>
+                <td>m_price</td>
+                <td><input type="text" name="m_price" value="{{ book.market_price }}"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="更新"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

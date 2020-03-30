@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商城首页</title>
+    {% load static %}
+    <link rel="shortcut icon " href="{% static '/indexWeb/img/shopping.ico' %}">
+    <link rel="stylesheet" href="{% static '/indexWeb/css/bootstrap.min.css' %}" type="text/css">
+    <!-- 自定义首页的css样式 -->
+    <link rel="stylesheet" href="{% static '/indexWeb/css/index.css' %}" type="text/css">
+
+    <script src="{% static '/indexWeb/js/jquery.min.js' %}"></script>
+
+
+
+</head>
+<body>
+    <header>
+        <div class="headerBar">
+            <div id="login1" class="headerText">
+                登录
+            </div>
+            <div id="login2" class="headerText">
+                免费注册
+            </div>
+
+            <div id="order1" class="headerText pull-right">
+                我的订单
+            </div>
+            <div id="shopping" class="headerText pull-right">
+                购物车
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!--搜索框-->
+        <div id="contDiv" class="row">
+            <div class="col-lg-3 col-md-3" ></div>
+            <div class="col-lg-6 col-md-6">
+                <div class="contSearch">
+                    <input id="searchBox1" type="text"  placeholder="">
+                    <span id="searchBtn1">&nbsp;搜索</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3" ></div>
+        </div>
+
+        <!-- 页面商品导航栏 -->
+        <div id="proDiv" class="row">
+            <!-- 商品导航栏 -->
+            <div class="col-lg-2 col-md-2 list-group listGroupDiv">
+                <a href="#" class="list-group-item disabled" id="firstList">商品列表</a>
+                <a href="#" class="list-group-item childList">手表</a>
+                <a href="#" class="list-group-item childList">女装</a>
+                <a href="#" class="list-group-item childList">男装</a>
+                <a href="#" class="list-group-item childList">珠宝</a>
+                <a href="#" class="list-group-item childList">化妆品</a>
+                <a href="#" class="list-group-item childList">女包</a>
+                <a href="#" class="list-group-item childList">格子衫</a>
+                <a href="#" class="list-group-item childList">AI机器人</a>
+            </div>
+            <div class="col-lg-10 col-md-10 imgDiv">
+                <img id="img" src="{% static '/indexWeb/img/01.jpg' %}">
+            </div>
+        </div>  <!-- id="proDiv" -->
+
+        <div id="barDiv" class="row">
+            <div class="col-lg-12 col-md-12 ">
+                精&nbsp;&nbsp;选&nbsp;&nbsp;好&nbsp;&nbsp;物
+            </div>
+        </div>
+
+        <div id="goodsDiv" class="row">
+
+            <div class="col-lg-3 col-md-3 ">
+                <div class="thumbnail content">
+                    <img src="../static/img/news-img-7.jpg" alt="">
+                    <p class="caption">
+                    <a href="#">优秀学员作品</a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 ">
+                <div class="thumbnail content">
+                    <img src="../static/img/news-img-7.jpg" alt="">
+                    <p class="caption">
+                    <a href="#">优秀学员作品</a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 ">
+                <div class="thumbnail content">
+                    <img src="../static/img/news-img-7.jpg" alt="">
+                    <p class="caption">
+                    <a href="#">优秀学员作品</a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 ">
+                <div class="thumbnail content">
+                    <img src="../static/img/news-img-7.jpg" alt="">
+                    <p class="caption">
+                    <a href="#">优秀学员作品</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>  <!-- class="container" -->
+
+    <!--轮播图-->
+    <script>
+        var i = 1;
+        var img = $("#img");
+
+        function showimg(i){
+            var url = "";//保存路径
+            switch(i){
+                case 1:
+                    url = "{% static '/indexWeb/img/01.jpg' %}";
+                    break;
+                case 2:
+                    url = "{% static '/indexWeb/img/02.jpg' %}";
+                    break;
+                case 3:
+                    url = "{% static '/indexWeb/img/03.jpg' %}";
+                    break;
+                case 4:
+                    url = "{% static '/indexWeb/img/04.jpg' %}";
+                    break;
+                case 5:
+                    url = "{% static '/indexWeb/img/05.jpg' %}";
+                    break;
+            }
+            img.prop("src", url);
+        }
+
+        var timer = setInterval(function(){
+            i++;
+            if(i===6){
+                i=1;
+            }
+            showimg(i);
+        },1500);
+
+        var box = $(".imgDiv");
+        // 鼠标移入
+        box.mouseover(function () {
+            clearInterval(timer);
+        });
+        // 鼠标移出
+        box.mouseout(function () {
+            timer = setInterval(function(){
+                i++;
+                if(i==6){
+                    i=1;
+                }
+                showimg(i);
+            },1500)
+        });
+    </script>
+
+
+
+    <footer>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>关于合作伙伴营销中心联系客服开放平台联系我们纯属虚构如有雷同纯属巧合知识产权 | © 2020 chenzhuo.com 版权所有</div>
+        <div>增值电信业务经营许可证：鄂A1-19970615|鄂网文（2020）1024-520号|第三方平台提供者备案：A31415926535897932384</div>
+        <div>短消息类服务接入代码使用证书：号 4543-213AA223|信息网络传播视听许可证：1109364号|出版物网络交易平台服务经营备案号：新出发备字第343号</div>
+        <div>专业号 3301034054605078号 |电视节目制作经营许可证（陈）字第520号|名称登记证：849923204120号|第三方平台备案：（陈）平台备字[2020]第3453404号</div>
+    </footer>
+</body>
+</html>
