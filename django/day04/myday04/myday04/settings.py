@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "music",
     "oto",
     "otm",
+    "mtm",
 ]
 
 MIDDLEWARE = [

@@ -22,4 +22,8 @@ urlpatterns = [
     url(r"^index$", views.index_view),
     url(r"^bookstore/", include("bookstore.urls")),
     url(r"^music/", include("music.urls")),
+
+    url(r"^test_cookies$", views.test_cookies),
+    url(r"^set_se$", views.set_se),
+    url(r"^get_se$", views.get_se),
 ]

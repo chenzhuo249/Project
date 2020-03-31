@@ -18,17 +18,17 @@
     <header>
         <div class="headerBar">
             <div id="login1" class="headerText">
-                登录
+                <a href="/login/0">登录</a>
             </div>
             <div id="login2" class="headerText">
-                免费注册
+                <a href="/login/0">免费注册</a>
             </div>
 
             <div id="order1" class="headerText pull-right">
-                我的订单
+                <a href="#">我的订单</a>
             </div>
             <div id="shopping" class="headerText pull-right">
-                购物车
+                <a href="#">购物车</a>
             </div>
         </div>
     </header>
@@ -69,45 +69,47 @@
             <div class="col-lg-12 col-md-12 ">
                 精&nbsp;&nbsp;选&nbsp;&nbsp;好&nbsp;&nbsp;物
             </div>
-        </div>
+        </div>  <!-- id="barDiv" -->
 
+        <!--商品推荐展示栏-->
         <div id="goodsDiv" class="row">
-
-            <div class="col-lg-3 col-md-3 ">
-                <div class="thumbnail content">
-                    <img src="../static/img/news-img-7.jpg" alt="">
-                    <p class="caption">
-                    <a href="#">优秀学员作品</a>
+            {% for i in list_img %}
+           <div class="col-lg-3 col-md-3 col-box">
+                <div class="goodsBox">
+                    <a href="#">
+                        <img src= "/static/indexWeb/img/goods/{{ i.imgPath }}">
+                        <div class="price">￥{{ i.price }}</div>
+                        <div class="goodsText">{{ i.name }}</div>
+                    </a>
                 </div>
             </div>
+            {% endfor %}
 
-            <div class="col-lg-3 col-md-3 ">
-                <div class="thumbnail content">
-                    <img src="../static/img/news-img-7.jpg" alt="">
-                    <p class="caption">
-                    <a href="#">优秀学员作品</a>
+
+        </div> <!-- id="goodsDiv" class="row" -->
+
+        <div id="btnDiv" class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="aBox">
+                    <a href="#">返回顶部</a> | <a href="/index/0">刷新</a>
                 </div>
             </div>
+        </div> <!-- id="btnDiv" class="row" -->
 
-            <div class="col-lg-3 col-md-3 ">
-                <div class="thumbnail content">
-                    <img src="../static/img/news-img-7.jpg" alt="">
-                    <p class="caption">
-                    <a href="#">优秀学员作品</a>
-                </div>
-            </div>
 
-            <div class="col-lg-3 col-md-3 ">
-                <div class="thumbnail content">
-                    <img src="../static/img/news-img-7.jpg" alt="">
-                    <p class="caption">
-                    <a href="#">优秀学员作品</a>
-                </div>
-            </div>
 
-        </div>
 
     </div>  <!-- class="container" -->
+
+
+    <footer>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>关于合作伙伴营销中心联系客服开放平台联系我们纯属虚构如有雷同纯属巧合知识产权 | © 2020 chenzhuo.com 版权所有</div>
+        <div>增值电信业务经营许可证：鄂A1-19970615|鄂网文（2020）1024-520号|第三方平台提供者备案：A31415926535897932384</div>
+        <div>短消息类服务接入代码使用证书：号 4543-213AA223|信息网络传播视听许可证：1109364号|出版物网络交易平台服务经营备案号：新出发备字第343号</div>
+        <div>专业号 3301034054605078号 |电视节目制作经营许可证（陈）字第520号|名称登记证：849923204120号|第三方平台备案：（陈）平台备字[2020]第3453404号</div>
+    </footer>
 
     <!--轮播图-->
     <script>
@@ -153,7 +155,7 @@
         box.mouseout(function () {
             timer = setInterval(function(){
                 i++;
-                if(i==6){
+                if(i===6){
                     i=1;
                 }
                 showimg(i);
@@ -163,13 +165,6 @@
 
 
 
-    <footer>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>关于合作伙伴营销中心联系客服开放平台联系我们纯属虚构如有雷同纯属巧合知识产权 | © 2020 chenzhuo.com 版权所有</div>
-        <div>增值电信业务经营许可证：鄂A1-19970615|鄂网文（2020）1024-520号|第三方平台提供者备案：A31415926535897932384</div>
-        <div>短消息类服务接入代码使用证书：号 4543-213AA223|信息网络传播视听许可证：1109364号|出版物网络交易平台服务经营备案号：新出发备字第343号</div>
-        <div>专业号 3301034054605078号 |电视节目制作经营许可证（陈）字第520号|名称登记证：849923204120号|第三方平台备案：（陈）平台备字[2020]第3453404号</div>
-    </footer>
+
 </body>
 </html>

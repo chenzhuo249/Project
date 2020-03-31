@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商城登录</title>
+    {% load static %}
+    <link rel="shortcut icon" href="{% static '/login/img/ico/login01.ico' %}">
+    <link rel="stylesheet" href="{% static '/login/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/login/css/login.css' %}" type="text/css">
+    <script src="{% static '/login/js/jquery.min.js' %}"></script>
+
+</head>
+<body>
+    <div class="boxDiv">
+        <img src="{% static '/login/img/bgImg/bg_01.jpg' %}">
+        <div class="loginBox">
+            <form>
+                <div class="input-group input-group-lg inputName">
+                    <input type="text" class="form-control " placeholder="Username" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group input-group-lg inputPwd">
+                    <input type="password" class="form-control " placeholder="Password" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="btn-group btnBtn" role="group" aria-label="...">
+
+
+                <button id="btn1" type="button" class="btn btn-default"><a href="/index/0">登&nbsp;录</a></button>
+
+                <button id="btn2" type="button" class="btn btn-default">注&nbsp;册</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+    <div class="resDiv"></div>
+    <div class="resBox">
+        <div class="hello-form">
+            <form>
+
+            <div class="form-group inputInfo firstInput">
+                <label for="uName">用户名</label>
+                <input type="text" id="uName" class="form-control">
+            </div>
+            <div class="form-group inputInfo">
+                <label for="uPwd1">密码</label>
+                <input type="password" id="uPwd1" class="form-control">
+            </div>
+            <div class="form-group inputInfo">
+                <label for="uPwd2">再次输入密码</label>
+                <input type="password" id="uPwd2" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-success inputInfo">注册</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!--显示隐藏注册页-->
+    <script>
+        (function () {
+            $(".resBox").hide();
+            $(".resDiv").hide();
+        })();
+        $("#btn2").click(function () {
+            $(".resBox").show();
+            $(".resDiv").show();
+        });
+        $(".resBox").click(function () {
+            $(".resBox").hide();
+            $(".resDiv").hide();
+        });
+    </script>
+
+
+    <!-- 切换背景图片-->
+    <script>
+        var arr = ["bg_01.jpg","bg_02.jpg","bg_03.jpg","bg_04.jpg","bg_05.jpg"];
+        var path = "/static/login/img/bgImg/";
+        var num = 0;
+        $("img").click(function(){
+            num++;
+            if(num===5){
+                num = 0;
+            }
+            $("img").prop("src", path+arr[num]);
+        })
+
+    </script>
+
+</body>
+</html>
