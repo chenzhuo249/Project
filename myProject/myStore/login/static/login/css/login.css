@@ -70,6 +70,17 @@ body,div,img,input{
     left: 35%;
     z-index: 4;
 }
+.resBox>#closeBtn{
+    font-size: 20px;
+    float: right;
+    color: black;
+}
+.resBox>#closeBtn:hover{
+    font-size: 25px;
+    color: red;
+    cursor: pointer;
+}
+
 .firstInput{
     margin-top: 30%;
 }

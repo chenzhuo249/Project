@@ -21,4 +21,6 @@ urlpatterns = [
 
     url(r"^music/", include("music.urls")),
     url(r"^sport/", include("sport.urls")),
+    url(r"^t/", include("cook.urls")),
+
 ]

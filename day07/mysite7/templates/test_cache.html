@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% load cache %}
+    {% cache 60 test6 %}
+        <p>
+            我是缓存的 {{ t1 }}
+        </p>
+    {% endcache %}
+
+    <h2>我是未缓存的 {{ t1 }}</h2>
+</body>
+</html>

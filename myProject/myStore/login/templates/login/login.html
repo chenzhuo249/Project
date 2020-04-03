@@ -38,23 +38,24 @@
 
     <div class="resDiv"></div>
     <div class="resBox">
+        <div id="closeBtn">×</div>
         <div class="hello-form">
-            <form>
+            <form action="/login/0" method="post">
+                {% csrf_token %}
+                <div class="form-group inputInfo firstInput">
+                    <label for="uName">用户名</label>
+                    <input type="text" id="uName" name="uName" class="form-control">
+                </div>
+                <div class="form-group inputInfo">
+                    <label for="uPwd1">密码</label>
+                    <input type="password" id="uPwd1" name="uPwd1" class="form-control">
+                </div>
+                <div class="form-group inputInfo">
+                    <label for="uPwd2">再次输入密码</label>
+                    <input type="password" id="uPwd2" name="uPwd2" class="form-control">
+                </div>
 
-            <div class="form-group inputInfo firstInput">
-                <label for="uName">用户名</label>
-                <input type="text" id="uName" class="form-control">
-            </div>
-            <div class="form-group inputInfo">
-                <label for="uPwd1">密码</label>
-                <input type="password" id="uPwd1" class="form-control">
-            </div>
-            <div class="form-group inputInfo">
-                <label for="uPwd2">再次输入密码</label>
-                <input type="password" id="uPwd2" class="form-control">
-            </div>
-
-            <button type="submit" class="btn btn-success inputInfo">注册</button>
+                <button type="submit" id="resBtn" class="btn btn-success inputInfo">注册</button>
             </form>
         </div>
     </div>
@@ -70,12 +71,35 @@
             $(".resBox").show();
             $(".resDiv").show();
         });
-        $(".resBox").click(function () {
+        $("#closeBtn").click(function () {
             $(".resBox").hide();
             $(".resDiv").hide();
         });
     </script>
 
+    <!-- 提交注册页信息 -->
+<!--    <script>-->
+<!--        $("#resBtn").click(function () {-->
+<!--            // var name = $("#uName").val();-->
+<!--            // var pwd = $("#uPwd1").val();-->
+
+
+<!--            $.ajax({-->
+<!--                url: "/login/0",-->
+<!--                type: "post",-->
+<!--                data: JSON.stringify({"UNAME": $("#uName").val(), "PWD": $("#uPwd1").val()}),-->
+<!--                contentType: "application/json",-->
+<!--                dataType: "json",-->
+<!--                success: function (res) {-->
+<!--                    alert();-->
+<!--                },-->
+<!--                error: function () {-->
+<!--                    alert("error");-->
+<!--                }-->
+<!--            })-->
+<!--        })-->
+
+<!--    </script>-->
 
     <!-- 切换背景图片-->
     <script>
