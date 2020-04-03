@@ -23,9 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!5fw@#k3f5--x_ldc%ce+vjhp_hm1d%c)5ff0g$-d1_otgpm9x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+#公有云上的公网ip
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition
@@ -151,3 +152,6 @@ EMAIL_PORT = 25  # SMTP服务的端口号
 EMAIL_HOST_USER = '1102225813@qq.com'  # 发送邮件的QQ邮箱
 EMAIL_HOST_PASSWORD = 'evstyhswxsawjada'  # 在QQ邮箱->设置->帐户->“POP3/IMAP......服务” 里得到的在第三方登录QQ邮箱授权码
 # EMAIL_USE_TLS = True  # 与SMTP服务器通信时，是否启动TLS链接(安全链接)默认false
+
+
+STATIC_ROOT = '/home/tarena/month3/day07/mysite7_static/static'

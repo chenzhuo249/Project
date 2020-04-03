@@ -1,12 +1,14 @@
 import os
 from time import time, sleep
-
 from django.conf import settings
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.cache import cache_page
+from django.http import Http404
 
+def xxx_view(request):
+    raise Http404  # 直接返回404
 
 @cache_page(10)
 def test_cache(request):
