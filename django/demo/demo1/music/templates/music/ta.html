@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试ajax</title>
+    {% load static %}
+    <script src="{% static '/music/jquery.min.js' %}"></script>
+    <style>
+        span:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <span>提交</span>
+
+
+    <script>
+
+        $("span").click(function () {
+
+            $.ajax({
+                url: "/music/ta",
+                type: "post",
+                data: {"age": "22"},
+                dataType: "json",
+                success: function (res) {
+                    var htmlStr = "";
+                    $.each(res, function (i, person) {
+                        htmlStr += "<h2>" + person.name + "---" + person.age + "</h2>";
+                    });
+                    $("body").append(htmlStr);
+                },
+                error: function () {
+                    console.log("我错啦")
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}")
+                },
+
+            })
+        })
+    </script>
+
+</body>
+</html>

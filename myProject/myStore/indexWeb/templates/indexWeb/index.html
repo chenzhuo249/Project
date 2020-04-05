@@ -25,7 +25,7 @@
             </div>
 
             <div id="order1" class="headerText pull-right">
-                <a href="#">我的订单</a>
+                <a href="/order/0">我的订单</a>
             </div>
             <div id="shopping" class="headerText pull-right">
                 <a href="#">购物车</a>
@@ -57,8 +57,6 @@
                 <a href="#" class="list-group-item childList">珠宝</a>
                 <a href="#" class="list-group-item childList">化妆品</a>
                 <a href="#" class="list-group-item childList">女包</a>
-                <a href="#" class="list-group-item childList">格子衫</a>
-                <a href="#" class="list-group-item childList">AI机器人</a>
             </div>
             <div class="col-lg-10 col-md-10 imgDiv">
                 <img id="img" src="{% static '/indexWeb/img/01.jpg' %}">
@@ -73,8 +71,8 @@
 
         <!--商品推荐展示栏-->
         <div id="goodsDiv" class="row">
-            {% for i in list_img %}
-           <div class="col-lg-3 col-md-3 col-box">
+            {% for i in list_goods %}
+            <div class="col-lg-3 col-md-3 col-box">
                 <div class="goodsBox">
                     <a href="#">
                         <img src= "/static/indexWeb/img/goods/{{ i.imgPath }}">

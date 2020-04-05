@@ -1,8 +1,9 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render
 
 # Create your views here.
 def index_view(request):
-    list_img = [
+    list_goods = [
         {"name":"外星人笔记本", "price":"16785.00", "imgPath":"g_01.jpg"},
         {"name":"CASIO手表", "price":"340.00", "imgPath":"g_02.jpg"},
         {"name":"iPhone手表", "price":"3400.00", "imgPath":"g_03.jpg"},
@@ -15,6 +16,5 @@ def index_view(request):
         {"name":"Air Jordan 1", "price":"2567.00", "imgPath":"g_10.jpg"},
         {"name":"程序员必备单品", "price":"1024.00", "imgPath":"g_11.jpg"},
         {"name":"YSL/杨树林", "price":"520.00", "imgPath":"g_12.jpg"},
-
     ]
     return render(request, "indexWeb/index.html", locals())

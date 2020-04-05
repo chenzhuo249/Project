@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'indexWeb',
     'login',
+    'order',
 ]
 
 MIDDLEWARE = [
