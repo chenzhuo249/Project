@@ -33,7 +33,7 @@ def reg_view(request):
 
         import hashlib
         m = hashlib.md5()
-        m.update(password_1.encode())
+        m.update(encode())
         passwrd_h = m.hexdigest()
 
         try:

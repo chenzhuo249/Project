@@ -60,7 +60,7 @@
                         {% if o.status == "2" %}
                         <td>已完成</td>
                         {% elif o.status == "1" %}
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" onclick="createOrder('{{ o.total }}')"></td>
                         {% endif %}
                         <td><img src="/static/indexWeb/img/goods/{{ o.imgPath }}" alt="图片走丢啦"></td>
                         <td>{{ o.name }}</td>
@@ -76,6 +76,7 @@
                         $(".showNav").html(notFound);
                     </script>
                     {% endfor %}
+
 
                 </table>
                 </form>
@@ -98,7 +99,7 @@
                         htmlStr += "<tr><td>&nbsp;</td></tr>";
                         htmlStr += "<tr class=\"orderTr\" id=\"" + order.id +"\">";
                         if(order.status === "1"){
-                            htmlStr += "<td><input type=\"checkbox\"></td>";
+                            htmlStr += "<td><input type=\"checkbox\" value=\"{{ o.total }}\"></td>";
                         }else if(order.status === "2"){
                             htmlStr += "<td>已完成</td>";
                         }
@@ -125,9 +126,9 @@
     </script>
 
     <script>
-        $("#1").click(function () {
-            alert("sss");
-        })
+        function createOrder(id) {
+            alert(id);
+        }
     </script>
 </body>
 </html>

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'indexWeb',
     'login',
     'order',
+    'order11',
 ]
 
 MIDDLEWARE = [

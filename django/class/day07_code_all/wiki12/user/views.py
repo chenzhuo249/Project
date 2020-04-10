@@ -34,7 +34,7 @@ def reg_view(request):
 
 
         m = hashlib.md5()
-        m.update(password_1.encode())
+        m.update(encode())
         passwrd_h = m.hexdigest()
 
         try:
@@ -79,7 +79,7 @@ def login_view(request):
             return HttpResponse('The username or password is wrong~')
 
         m = hashlib.md5()
-        m.update(password.encode())
+        m.update(encode())
         password_h = m.hexdigest()
 
         #比对hash值

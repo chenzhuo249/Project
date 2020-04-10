@@ -4,7 +4,20 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
+"""
+全部订单 = {
+   "订单编号01":{"订单详情":[{商品01的信息},{商品02的信息}], "订单总价":"666", "订单状态":"已完成/未支付/已取消"}, 
+   "订单02":{}, 
+   "订单03":{}, 
+   "订单04":{} 
+    
+}
+"""
+
 def order_view(request):
+
+
+
     orders = [
         {"id":"1", "name": "外星人笔记本", "price": "16785.00", "imgPath": "g_01.jpg", "count": "2", "status":"1"},
         {"id":"2", "name": "CASIO手表", "price": "340.00", "imgPath": "g_02.jpg", "count": "2", "status":"2"},
@@ -12,6 +25,7 @@ def order_view(request):
         {"id":"4", "name": "华为手机", "price": "8899.00", "imgPath": "g_04.jpg", "count": "1", "status":"2"},
         {"id":"5", "name": "VIVO手机", "price": "3680.00", "imgPath": "g_05.jpg", "count": "1", "status":"1"},
     ]
+
     # 从数据库中查询出用户所对应的所有订单 orders
     for item in orders:
         item["total"] = str(float(item["price"]) * int(item["count"]))
