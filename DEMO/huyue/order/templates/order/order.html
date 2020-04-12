@@ -3,8 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>订单页面</title>
+    <script src="../../static/order/jquery.min.js"></script>
+    <style>
+        #showDIV{
+            /*display: inline-block;*/
+            width: 300px;
+            height: 300px;
+            background-color: #2aabd2;
+        }
+    </style>
 </head>
 <body>
-    <h1>这是订单页</h1>
+    <input type="radio" name="c1" value="湖北省武汉市"><span class="proName">湖北省</span><span class="cityName">武汉市</span><br>
+    <input type="radio" name="c1" value="湖北省十堰市">十堰市<br>
+    <input type="radio" name="c1" value="湖北省洪湖市">洪湖市<br>
+    <button id="btn">点我哦</button>
+    <div id="showDIV"></div>
+    <script>
+        $("#btn").click(function () {
+            $("#showDIV").html($("input[type='radio'][name='c1']:checked").val());
+            // $("#showDIV").html($("#selectName").val());
+            // $("#showDIV").html($("#selectName :selected").html());
+
+        });
+        $("input[type='radio'][name='c1']").change(function () {
+            $("#showDIV").html($("input[type='radio'][name='c1']:checked").val());
+            console.log($(".proName").html());
+            console.log($(".cityName").html());
+        })
+    </script>
+
+    <select id="selectName">
+        <option value="">请选择你喜欢的类型</option>
+        <option value="0">唱歌1</option>
+        <option value="1">唱歌2</option>
+        <option value="2">唱歌3</option>
+
+    </select>
+
+    <script>
+
+    </script>
+
 </body>
 </html>
