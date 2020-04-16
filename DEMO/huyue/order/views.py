@@ -9,4 +9,8 @@ def order_view(request):
     # res = Order.objects.all()
     # return HttpResponse(res[0].name)
 
-    return render(request, "order/order.html")
+    # return render(request, "order/order.html")
+
+    from django.urls import reverse
+    print(reverse("chenzhuo"))
+    return HttpResponse("我是chenzhuo反向解析")
