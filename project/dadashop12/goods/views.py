@@ -1,53 +1,44 @@
 from django.core.paginator import Paginator
 from django.http import JsonResponse
-from django.views.generic import View
-
+from django.shortcuts import render
 import json
-from django.conf import settings
 
-from tools.cache_decorator import cache_check
+# Create your views here.
+from django.views import View
 from .models import *
-
-
+from django.conf import settings
+from tools.cache_decorator import cache_check
 
 class GoodsIndexView(View):
 
     def get(self, request):
-        """
-        首页商品及分类项展示
 
-        :param result:
-        :return:
-        """
-        # 127.0.0.1:8000/v1/goods/index
-        # 0. 获取所有品类
-        print('----goods index view in----')
-        catalog_list = Catalog.objects.all()
-        # 1. 获取各个catalog下的三条sku数据，首页每个品类下面默认显示三个sku
-        index_data = []
-        # 从redis中获取所有数据
+        print('-------index view in -----')
+        #按类别进行查询
+        all_cata = Catalog.objects.all()
+        res = []
 
-        for cata in catalog_list:
-            catalog_dic = {}
-            catalog_dic["catalog_id"] = cata.id
-            catalog_dic["catalog_name"] = cata.name
-            # 1.1 获取拉杆箱sku
-            spu_ids = SPU.objects.filter(catalog=cata.id).values("id")
-            sku_list = SKU.objects.filter(spu__in=spu_ids, is_launched=True)[:3]
-            catalog_dic["sku"] = []
+        for cata in all_cata:
+            cata_dic = {}
+            cata_dic['catalog_id'] = cata.id
+            cata_dic['catalog_name'] = cata.name
+            #获取该品类下所有spu的id
+            spu_ids = SPU.objects.filter(catalog=cata.id).values('id')
+            sku_list = SKU.objects.filter(spu__in=spu_ids,is_launched=True)[:3]
+            cata_dic['sku'] = []
             for sku in sku_list:
-                sku_dict = dict()
+                sku_dict = {}
                 sku_dict['skuid'] = sku.id
-                sku_dict['caption'] = sku.caption
                 sku_dict['name'] = sku.name
+                sku_dict['caption'] = sku.caption
                 sku_dict['price'] = str(sku.price)
                 sku_dict['image'] = str(sku.default_image_url)
-                catalog_dic["sku"].append(sku_dict)
-            index_data.append(catalog_dic)
+                cata_dic['sku'].append(sku_dict)
+            res.append(cata_dic)
 
-        result = {"code": 200, "data": index_data, "base_url": settings.PIC_URL}
-
+        result = {'code':200, 'data':res, 'base_url': settings.PIC_URL}
         return JsonResponse(result)
+
 
 
 class GoodsListView(View):
@@ -92,7 +83,7 @@ class GoodsListView(View):
 
 class GoodsDetailView(View):
 
-    @cache_check(key_prefix='chen', key_param='sku_id', cache='goods_detail')
+    @cache_check(key_prefix='gd', key_param='sku_id', cache='goods_detail')
     def get(self, request, sku_id):
         """
         获取sku详情页信息，获取图片暂未完成
@@ -169,6 +160,7 @@ class GoodsDetailView(View):
 
         result = {'code': 200, 'data': sku_details, 'base_url': settings.PIC_URL}
         return JsonResponse(result)
+
 
 
 class GoodsChangeSkuView(View):

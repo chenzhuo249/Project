@@ -15,16 +15,18 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'sn*p!s^ys%@3r*k2337zrm3*(_7pmk5#up+o2d45l#b07@-yus'
+SECRET_KEY = 'c3y+4-%mv_5$wa8($1zxr&(%ezv0(^rrbc1ktc@)q2m#xud6#w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -37,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'user',
-    'mytoken',
+    'dtoken',
     'goods',
+    'carts',
+    'order'
 ]
 
 MIDDLEWARE = [
@@ -46,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -72,19 +76,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dadashop12.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'dadashop12',
         'NAME': 'myDada',
-        'USER': "root",
-        "PASSWORD": "123456",
-        "HOST": "127.0.0.1",
-        "PORT": 3306
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -104,6 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -117,13 +125,12 @@ USE_L10N = True
 
 USE_TZ = False
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-# 静态文件
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
-
+#STATCFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 # 用户上传的文件，称为 media files 【媒体文件】
 # 标识出　什么样的请求是　访问　媒体文件的请求
@@ -162,41 +169,62 @@ CORS_ALLOW_HEADERS = (
 )
 
 # JWT 的 key
-MY_JWT_TOKEN_KEY = "1234567"
+JWT_TOKEN_KEY = '1234567'
 
-# from django_redis.compressors.zlib import ZlibCompressor
-# django_redis.compressors.zlib.ZlibCompressor
+#from django_redis.compressors.zlib import ZlibCompressor
 
+#   django_redis.compressors.zlib.ZlibCompressor
 
 # redis 缓存配置
 CACHES = {
     "default": {
             "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": "redis://127.0.0.1:6379/0", # 具体在redis中的存储位置, /1 切换库
+            "LOCATION": "redis://127.0.0.1:6379", # 具体在redis中的存储位置, /1 切换库, 默认0库
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
-                # "PASSWORD": "123456", # redis 密码
+                #"PASSWORD":  123456
             }
         },
 
     "goods": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/5",  # 具体在redis中的存储位置, /1 切换库
+        "LOCATION": "redis://127.0.0.1:6379/5",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor", # 开启压缩
+            "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor" #开启压缩
+            # "PASSWORD":  123456
         }
     },
 
+    # 商品首页的缓存，独立出来，删除时暴力全删
     "goods_detail": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": "redis://127.0.0.1:6379/6",
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+                "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor"  # 开启压缩
+                # "PASSWORD":  123456
+            },
+    },
+
+    # 购物车数据在redis中存储，不是缓存的意思，需关闭过期时间
+    "carts": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/6",  # 具体在redis中的存储位置, /1 切换库
+        "LOCATION": "redis://127.0.0.1:6379/4",
+        "TIMEOUT": None, #cache对象默认set为不带过期时间
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor",  # 开启压缩
-        }
-    },
+            "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor"  # 开启压缩
+            # "PASSWORD":  123456
+        },
+
+
+    }
+
 }
+
+# ??? 分布式路由前面加 / django会提醒, False 关闭
+APPEND_SLASH = False
 
 # 发送邮件设置
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # 固定写法
@@ -206,15 +234,10 @@ EMAIL_HOST_USER = '1102225813@qq.com'  # 发送邮件的QQ邮箱
 EMAIL_HOST_PASSWORD = 'evstyhswxsawjada'
 
 
-# ??? 分布式路由前面加 / django会提醒, False 关闭
-APPEND_SLASH = False
-
-
-# 微博配置相关
+#微博相关信息
 WEIBO_CLIENT_ID = "2650710676" # App Key
-
 WEIBO_CLIENT_SECRET = "ed24dc5827f16c5f243349c1ea18e44e" # App Secret
-
 # oauth2.0 授权回调页
-WEIBO_REDIRECT_URI = "http://127.0.0.1:7000/dadashop/templates/callback.html"
+WEIBO_REDIRECT_URI = 'http://127.0.0.1:7000/dadashop/templates/callback.html'
+
 

@@ -2,6 +2,8 @@ from django.db import models
 from tools.models import BaseModel
 
 
+# Create your models here.
+
 class Catalog(BaseModel):
     """
     商品类别
@@ -112,8 +114,7 @@ class SKUImage(BaseModel):
     SKU图片
     """
     sku = models.ForeignKey(SKU, on_delete=models.CASCADE, verbose_name='sku')
-    # upload_to 指定图片的上传路径，用户上传的图片/文件　会存储至　settings.MEDIA_ROOT + '/' + upload_to
-    # 假如上传的文件名已存在，会自动重命名
+    # upload_to: 用户上传的图片/文件 会存储至 MEDIA_ROOT + '/' + upload_to
     image = models.ImageField(verbose_name='图片路径', upload_to='sku_images')
 
     class Meta:

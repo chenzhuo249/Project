@@ -13,7 +13,6 @@ def cache_check(**cache_kwargs):
             expire = cache_kwargs.get('expire', 30)
             #获取视图传参中的 指定参数
             cache_key = key_prefix + kwargs[key_param]
-            cache_key = key_prefix + kwargs[key_param]
             print('---cache key is %s'%(cache_key))
             res = CACHE.get(cache_key)
             if res:

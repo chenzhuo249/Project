@@ -13,20 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import url,include
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.conf import settings
 from . import views
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r"^t_cors$", views.test_cors),
-    url(r"^v1/users", include("user.urls")),
-    url(r"^v1/tokens", include("mytoken.urls")),
-    url(r"^v1/goods", include("goods.urls"))
+    url(r'^test_cors$',views.test_cors),
+
+    # http://127.0.0.1:8000/v1/users ...
+    url(r'^v1/users', include('user.urls')),
+    url(r'^v1/tokens',include('dtoken.urls')),
+    url(r'^v1/goods',include('goods.urls')),
+    url(r'^v1/carts',include('carts.urls')),
+    url(r'^v1/orders',include('order.urls')),
 ]
 
-# 媒体文件 绑定media_url 和 media_root。但是DEBUG = False 之后,依然访问不到
-# http://127.0.0.1:8000/media/sku_images/02.jpg
+#绑定media_url和media_root
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
